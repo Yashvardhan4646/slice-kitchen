@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern pizza website designed by Subho using HTML and CSS.">
+    <title>Slice Kitchen | Pizza Landing Page by Subho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            background: linear-gradient(to right, #FFF3E0, #ffe0b2);
+            font-family: system-ui, sans-serif;
+        }
+        .hero{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 60px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+        .hero-text{
+            max-width: 450px;
+        }
+        .hero-image img{
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .hero-image img:hover{
+            transform: scale(1.05);
+        }
+        .header{
+            color: #D62828;
+            font-size: 64px;
+            font-family: "Freckle Face", system-ui;
+            font-weight: 900;
+            font-style: normal;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        .tagline{
+            font-size: 20px;
+            color: #1D1D1D;
+            margin-bottom: 20px;
+        }
+        .btn{
+            background-color: #f4a26a;
+            border:none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .btn:hover{
+            background-color: #e76f51;
+            transform: scale(1.05);
+        }
+        .btn:active {
+            transform: scale(0.97);
+        }
+        .title-menu{
+            color: #D62828;
+            font-size: 44px;
+            font-family: "Freckle Face", system-ui;
+            font-weight: 500;
+            font-style: normal;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            line-height: 1.1;  
+            text-align: center;          
+        }
+        .menu{
+            margin-bottom: 80px;
+        }
+        .cards{
+            height: max-content;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: auto;
+            padding: 20px;
+        }
+        .card{
+            background: linear-gradient(to top, #fcebd0, #ffd79a);
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.5s;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0.95;
+            cursor: pointer;
+        }
+        .card img{
+            width: 100%;
+            border-radius: 12px;
+        }
+        .card h2{
+            margin: 10px 0 5px;
+        }
+        .card h3{
+            color: #555;
+            font-size: 14px;
+        }
+        .card p{
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #D62828;
+        }
+        .card:hover {
+            transform: translateY(-18px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.389);
+            opacity: 1;
+        }
+        .why-row {
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 40px;
+        }
+        .why-text{
+            max-width: 400px;
+            flex: 1;
+        }
+        .why-image img{
+            width: 100%;
+            max-width: 280px;
+            border-radius: 15px;
+            transition: 0.4s ease;
+        }
+        .why-image img:hover{
+            transform: scale(1.05);
+        }
+        .why-image{
+            flex:1;
+        }
+        .why-us{
+            padding: 60px;
+            margin-top: 40px;
+        }
+        .why-title{
+            color: #D62828;
+            font-size: 44px;
+            font-family: "Freckle Face", system-ui;
+            font-weight: 500;
+            font-style: normal;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            line-height: 1.1;  
+            text-align: center;
+        }
+        .why-text h2 {
+            color: #D62828;
+            margin-bottom: 10px;
+        }
+        .why-text p {
+            color: #444;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 14px;
+        }
+        .feedback-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #D62828;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .feedback-btn:hover {
+            transform: scale(1.1);
+            background-color: #a61b1b;
+        }
+        .feedback-box {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 250px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+        .feedback-box input,.feedback-box textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .feedback-box button {
+            width: 100%;
+            background: #D62828;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .success-msg {
+            position: fixed;
+            bottom: 280px;
+            right: 40px;
+            background: #1f9751;
+            color: white;
+            padding: 20px 35px;
+            border-radius: 10px;
+            font-size: 17px;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.392);
+        }
+        @media (max-width: 768px) {
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .header {
+    font-size: 40px;
+  }
+
+  .why-row {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  .why-text {
+    max-width: 50%;
+  }
+
+  .why-image {
+    max-width: 50%;
+  }
+  .why-image img {
+    max-width: 140px;
+  }
+  .why-text h2 {
+    font-size: 16px;
+  }
+  .why-text p {
+    font-size: 13px;
+  }
+
+}
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-text">
+            <h1 class="header">Slice Kitchen</h1>
+            <p class="tagline">Fresh hot pizza, delivered fast</p>
+            <button class="btn">Order Now</button><br><br>
+        </div>
+        <div class="hero-image">
+            <a href="https://ibb.co/sdWJwTLG"><img src="https://i.ibb.co/bMbRB4pZ/BBQ-chicken.png" alt="BBQ-chicken" border="0"></a>
+        </div>
+    </section>
+    <section class="menu">
+         <h1 class=title-menu>Hot & Fresh Picks</h1>
+         <div class="cards">
+            <div class="card">
+                <a href="https://ibb.co/qFRWRLmR"><img src="https://i.ibb.co/G3VtVfCV/Margherita.png" alt="Margherita" border="0"></a>
+                <h2>Margherita</h2>
+                <h3>Classic cheese & fresh tomato</h3>
+                <p>₹199</p>
+            </div>
+            <div class="card">
+                <a href="https://ibb.co/fYcFHhCr"><img src="https://i.ibb.co/BV13BXgT/pepperoni.png" alt="pepperoni" border="0"></a>
+                <h2>Pepperoni</h2>
+                <h3>Loaded with spicy pepperoni</h3>
+                <p>₹249</p>
+            </div>
+            <div class="card">
+                <a href="https://ibb.co/NnL0TYn6"><img src="https://i.ibb.co/gFD04gFM/veggie-supreme.png" alt="veggie-supreme" border="0"></a>
+                <h2>Veggie Supreme</h2>
+                <h3>Fresh veggies & olives</h3>
+                <p>₹229</p>
+            </div>
+            <div class="card">
+                <a href="https://ibb.co/sdWJwTLG"><img src="https://i.ibb.co/bMbRB4pZ/BBQ-chicken.png" alt="BBQ-chicken" border="0"></a>
+                <h2>BBQ Chicken</h2>
+                <h3>Smoky chicken with BBQ sauce</h3>
+                <p>₹269</p>
+            </div>
+            </div>
+    </section>
+    <section class="why-us">
+  <h1 class="why-title">Why Choose Us</h1>
+  <div class="why-row">
+    <div class="why-text">
+      <h2>Fast Delivery 🚀</h2>
+      <p>Get your pizza hot and fresh in minutes</p>
+    </div>
+    <div class="why-image">
+      <a href="https://ibb.co/JwYbYQHj"><img src="https://i.ibb.co/1tCpC6TG/delivery.png" alt="delivery" border="0"></a>
+    </div>
+  </div>
+  <div class="why-row">
+    <div class="why-image">
+      <a href="https://ibb.co/rK9Fzh6V"><img src="https://i.ibb.co/WNCGMXyL/veggies.png" alt="veggies" border="0"></a>
+    </div>
+    <div class="why-text">
+      <h2>Fresh Ingredients 🧀</h2>
+      <p>We use only high-quality fresh toppings</p>
+    </div>
+  </div>
+  <div class="why-row">
+    <div class="why-text">
+      <h2>Perfect Taste 🔥</h2>
+      <p>Authentic recipes with rich flavor</p>
+    </div>
+    <div class="why-image">
+      <a href="https://ibb.co/r24zXMQ8"><img src="https://i.ibb.co/PGwPV4rX/close-up.png" alt="close-up" border="0"></a>
+    </div>
+  </div>
+</section>
+<button class="feedback-btn">💬</button>
+    <div class="feedback-box">
+        <h2>Feedback</h2>
+        <input type="text" placeholder="Your name">
+        <textarea placeholder="Your feedback"></textarea>
+        <button>Send</button>
+    </div>
+    <div class="success-msg">✅ Feedback sent successfully!</div>
+<footer class="footer">
+  <p>© 2026 Slice Kitchen | Made with 🍕 | Made by Subho</p>
+</footer>
+    <script>
+  const btn = document.querySelector(".feedback-btn");
+  const box = document.querySelector(".feedback-box");
+  const sendBtn = document.querySelector(".feedback-box button");
+  const msg = document.querySelector(".success-msg");
+  btn.onclick = () => {
+    box.style.display = box.style.display === "block" ? "none" : "block";
+  };
+  sendBtn.onclick = () => {
+    msg.style.display = "block";
+    box.style.display = "none";
+
+    setTimeout(() => {
+      msg.style.display = "none";
+    }, 2000);
+  };
+</script>
+</body>
+</html>
