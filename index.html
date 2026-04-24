@@ -287,13 +287,45 @@
         .nav-links a:hover {
             color: #D62828;
         }
+        .menu-toggle {
+          display: none;
+          font-size: 28px;
+          cursor: pointer;
+        }
         @media (max-width: 768px) {
 
   body {
     padding: 0 10px;
   }
 
-  /* HERO */
+  .navbar {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    flex-direction: column;
+    width: 180px;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
   .hero {
     flex-direction: column;
     text-align: center;
@@ -313,13 +345,11 @@
     margin-top: 20px;
   }
 
-  /* MENU CARDS */
   .cards {
     grid-template-columns: 1fr;
     padding: 10px;
   }
 
-  /* WHY SECTION */
   .why-row {
     flex-direction: column;
     text-align: center;
@@ -335,25 +365,11 @@
     max-width: 200px;
   }
 
-  /* NAVBAR */
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* FEEDBACK BOX */
   .feedback-box {
     width: 90%;
     right: 5%;
   }
 
-  /* SUCCESS MESSAGE */
   .success-msg {
     right: 10%;
     bottom: 300px;
@@ -364,15 +380,18 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-      <h2 class="logo">🍕 Slice Kitchen</h2>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#why">Why Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+   <nav class="navbar">
+  <h2 class="logo">🍕 Slice Kitchen</h2>
+
+  <div class="menu-toggle">☰</div>
+
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
     <section class="hero">
         <div class="hero-text">
             <h1 class="header">Slice Kitchen</h1>
@@ -489,6 +508,12 @@
       msg.style.display = "none";
     }, 2000);
   };
+const toggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+toggle.onclick = () => {
+  navLinks.classList.toggle("active");
+};
 </script>
 </body>
 </html>
